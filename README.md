@@ -1,12 +1,8 @@
 ![Project Leviathan](leviathan_banner.jpg)
 
-**Principal Investigator:** A. Hewitt  
-**Status:** ACTIVE (Phase I: Ingestion)  
-**Date:** December 30th, 2025
-
 ## 1. Project Overview
 
-**Project Leviathan** is a computational investigation into the **Temporal Density Hypothesis**. This framework challenges the standard $\Lambda$CDM assumption that time flows linearly ($d\tau = dt$) back to the Big Bang.
+**Project Leviathan** is a computational investigation into the **Temporal Density Hypothesis**. This framework challenges the standard ΛCDM assumption that time flows linearly ($d\tau = dt$) back to the Big Bang.
 
 Instead, we posit that the rate of causal processing ($\tau$) scales inversely with the complexity of the Universe, following a power law $\tau \propto t^{-\alpha}$. This implies an **Asymptotic Singularity** where the "first second" of the Universe contained an effectively infinite causal duration, rendering Inflation obsolete and explaining the "impossible" maturity of the early Universe.
 
