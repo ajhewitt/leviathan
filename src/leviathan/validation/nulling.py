@@ -57,3 +57,27 @@ class NullGenerator:
             rotated_map = r_engine.rotate_map_pixel(self.original_map)
             
             yield i, rotated_map
+
+import numpy as np
+import healpy as hp
+
+def generate_masked_null(real_map, mask, lmax=512):
+    """
+    Generates a Gaussian Random Field (GRF) constrained by the 
+    power spectrum of the real map and the physical mask.
+    """
+    nside = hp.get_nside(real_map)
+    
+    # 1. Extract the Power Spectrum (Cl) from the real map
+    # We use the masked map to get the observed power
+    cls = hp.anafast(real_map * mask, lmax=lmax)
+    
+    # 2. Correct for the mask bias (f_sky)
+    f_sky = np.mean(mask)
+    cls_corrected = cls / f_sky
+    
+    # 3. Synthesize a new random sky from those Cls
+    null_map = hp.synfast(cls_corrected, nside, lmax=lmax, verbose=False)
+    
+    # 4. Apply the SAME mask to the null map
+    return null_map * mask

@@ -5,7 +5,7 @@ Handles loading of Planck FITS files and generation of synthetic mock data.
 
 import numpy as np
 import healpy as hp
-from ouroboros import config
+from leviathan import config
 
 def load_map(filepath, field=0):
     """
@@ -67,3 +67,72 @@ def get_mock_map(mode='random'):
         # Rotator: (phi, theta, psi)
         r = hp.Rotator(rot=[np.degrees(phi), np.degrees(theta)], deg=True, inv=True)
         return r.rotate_map_pixel(base_map)
+
+import numpy as np
+from astropy.io import fits
+from astropy.cosmology import Planck18
+import os
+import gc
+
+def load_quasars(filepath):
+    """
+    Ingests DESI DR1 'zpix' Catalog (11GB) safely.
+    Filters for SPECTYPE='QSO' to reduce memory footprint.
+    """
+    if not os.path.exists(filepath):
+        raise FileNotFoundError(f"Catalog not found: {filepath}")
+    
+    print(f"Loading DESI Catalog (Memmap): {filepath}...")
+    
+    # Open in Memmap mode so we don't crash RAM
+    with fits.open(filepath, memmap=True) as hdul:
+        data = hdul[1].data
+        cols = data.columns.names
+        
+        # 1. Identify Quasars
+        print("-> Scanning SPECTYPE column...")
+        spectypes = data['SPECTYPE']
+        
+        # Handle string vs bytes automatically
+        try:
+            is_qso = (spectypes == 'QSO')
+        except FutureWarning:
+            # If numpy complains about string comparison
+            is_qso = (np.char.strip(spectypes) == 'QSO')
+
+        # Check for ZWARN (use 'ZWARN' or 'ZWARN_RR')
+        warn_key = 'ZWARN' if 'ZWARN' in cols else 'ZWARN_RR'
+        
+        # Create mask: Must be a Quasar, No warnings, and Z > 0
+        is_good = (data[warn_key] == 0) & (data['Z'] > 0)
+        mask = is_qso & is_good
+        
+        count = np.sum(mask)
+        print(f"-> Found {count} verified Quasars (filtering out stars/galaxies).")
+        
+        # 2. Load ONLY the target rows
+        ra_key  = 'TARGET_RA' if 'TARGET_RA' in cols else 'RA'
+        dec_key = 'TARGET_DEC' if 'TARGET_DEC' in cols else 'DEC'
+        
+        ra = data[ra_key][mask]
+        dec = data[dec_key][mask]
+        z = data['Z'][mask]
+        
+        # Cleanup memory immediately
+        del spectypes, is_qso, is_good, mask
+        gc.collect()
+
+    print("-> Converting to Comoving 3D Coordinates (Planck18)...")
+    
+    # 3. Spherical -> Cartesian
+    r = Planck18.comoving_distance(z).value # Mpc
+    
+    phi = np.radians(ra)
+    theta = np.radians(90.0 - dec)
+    
+    x = r * np.sin(theta) * np.cos(phi)
+    y = r * np.sin(theta) * np.sin(phi)
+    z_coord = r * np.cos(theta)
+    
+    positions = np.column_stack((x, y, z_coord))
+    return positions, z

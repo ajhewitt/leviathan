@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "leviathan"
+version = "0.1.0"
+description = "A Null-Test Audit of the Temporal Density Hypothesis"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [
+  { name = "A. Hewitt", email = "research@project-ouroboros.org" },
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Astronomy",
+]
+dependencies = [
+    "numpy>=1.24.0",
+    "scipy>=1.10.0",
+    "pandas>=2.0.0",
+    "astropy>=5.3.0",
+    "healpy>=1.16.0",
+    "networkx>=3.1",
+    "matplotlib>=3.7.0",
+]
+
+[project.urls]
+"Repository" = "https://github.com/ajhewitt/leviathan"
+
+# This automatically finds the source code in "src/leviathan"
+[tool.setuptools.packages.find]
+where = ["src"]
