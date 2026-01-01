@@ -1,0 +1,147 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm, amsfonts}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+
+\title{\textbf{Retro-Causal Optimization in Expanding Graph Topologies:\\
+Anomalies of Apparent Intent and Precocious Maturity}}
+\author{Alastair J. Hewitt}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We present a formal mathematical framework for a ``Retro-Selective'' causal network: a directed tree graph where the root acts as a fixed observational anchor (the Present) and the leaves represent a growing frontier of initial conditions (the Past). Unlike standard forward-chaining stochastic processes, this model employs a root-centric optimization that effectively resamples the entire history at each step of expansion. We derive two primary geometric anomalies inherent to this topology: (1) \textit{The Collapse of Historical Entropy}, where the surviving history exhibits asymptotic efficiency indistinguishable from determinism, and (2) \textit{The Linear Growth of Teleological Bias}, where the initial conditions appear statistically fine-tuned to target the observer with a precision that scales linearly with the depth of the system.
+\end{abstract}
+
+\section{Introduction}
+Standard causal models typically assume a fixed initial condition $t_0$ and evolve forward into a branching future. We propose an inverted architecture: a fixed terminal state (the Root, $\rho$) and a branching set of potential origins (Leaves, $\Lambda$). The system evolves by extending the depth of the leaves, effectively adding ``past'' to the structure.
+
+This paper formalizes the selection mechanism within this structure as a thermodynamic optimization problem. We demonstrate that fixing the observer ($\rho$) while expanding the causal horizon ($t \to \infty$) forces the selected history to occupy an increasingly negligible volume of the phase space, generating artifacts of ``instant evolution'' and ``fine-tuning.''
+
+\section{Formal Framework}
+
+\subsection{Topological Definitions}
+Let the universe at iteration $t$ be defined as a directed tree graph $\mathcal{T}_t = (V_t, E_t)$.
+
+\begin{definition}[The Fixed Observer]
+The root node $\rho \in V_t$ is the unique terminal node of all paths. It represents the static ``Present'' or the state of observation. Its position is invariant.
+\end{definition}
+
+\begin{definition}[The Expanding Frontier]
+Let $\Lambda_t \subset V_t$ be the set of leaf nodes at depth $t$. These represent the manifold of possible initial conditions (the ``Big Bang'') at iteration $t$.
+\end{definition}
+
+\begin{definition}[Causal History]
+For any leaf $u \in \Lambda_t$, there exists a unique directed path $\gamma_u$ connecting $u$ to $\rho$. The set of all possible histories is $\Gamma_t = \{ \gamma_u \mid u \in \Lambda_t \}$.
+\end{definition}
+
+\subsection{The Measure of Action}
+We assign a scalar cost (or action) $S(e) \in \mathbb{R}^+$ to every edge $e \in E_t$. The total action of a history is the sum of its edge costs:
+\begin{equation}
+    \mathcal{S}(\gamma_u) = \sum_{e \in \gamma_u} S(e)
+\end{equation}
+We assume edge costs are independent and identically distributed (i.i.d.) random variables drawn from a distribution with mean $\mu$ and variance $\sigma^2$.
+
+\subsection{The Selection Mechanism}
+The selection of the ``actual'' history is governed by a Boltzmann distribution conditioned on the fixed root. The weight of a history is given by the propagator:
+\begin{equation}
+    W(\gamma_u) = e^{-\beta \mathcal{S}(\gamma_u)}
+\end{equation}
+where $\beta > 0$ represents the selection pressure (inverse temperature).
+
+The partition function $Z_t$ represents the total probability amplitude arriving at the root:
+\begin{equation}
+    Z_t = \sum_{u \in \Lambda_t} e^{-\beta \mathcal{S}(\gamma_u)}
+\end{equation}
+
+The probability that a specific leaf $u$ is the true initial condition is given by the Gibbs measure:
+\begin{equation} \label{eq:prob}
+    P_t(u) = \frac{1}{Z_t} e^{-\beta \mathcal{S}(\gamma_u)}
+\end{equation}
+
+\section{Dynamics and Evolution}
+The system evolves via a recursive process $\mathcal{T}_t \to \mathcal{T}_{t+1}$.
+
+\begin{enumerate}
+    \item \textbf{Global Extension:} Every leaf $u \in \Lambda_t$ branches into $k$ new nodes $\{v_1, \dots, v_k\}$. The depth of the tree increases by 1.
+    \item \textbf{Resampling:} The edge costs for the new branches are realized. The partition function $Z_{t+1}$ is recalculated.
+    \item \textbf{Optimization:} The ``Actual History'' $H_{t+1}$ is identified as the Maximum Likelihood Estimate (MLE) of the new distribution:
+    \begin{equation}
+        H_{t+1} = \underset{u \in \Lambda_{t+1}}{\mathrm{argmax}} \, P_{t+1}(u)
+    \end{equation}
+\end{enumerate}
+
+\section{Derivation of Anomalies}
+
+\subsection{Theorem 1: The Collapse of Historical Entropy}
+\textit{Hypothesis: As the system grows, the ambiguity of the past vanishes, creating an illusion of determinism.}
+
+Let $H(P_t)$ be the Shannon entropy of the distribution of initial conditions:
+\begin{equation}
+    H(P_t) = - \sum_{u \in \Lambda_t} P_t(u) \log P_t(u)
+\end{equation}
+
+\begin{theorem}
+For sufficiently large $\beta$, the entropy rate of the history vanishes as $t \to \infty$.
+\end{theorem}
+
+\begin{proof}
+Consider the path $\gamma^*$ with minimal action $\mathcal{S}_{min}$. The probability ratio between the optimal path and any suboptimal path $\gamma'$ scales as:
+\begin{equation}
+    \frac{P(\gamma^*)}{P(\gamma')} = e^{-\beta (\mathcal{S}_{min} - \mathcal{S}')}
+\end{equation}
+Let $\Delta S_t = \mathcal{S}' - \mathcal{S}_{min}$. Since $\mathcal{S}$ is a sum of i.i.d. variables, by the Law of Large Numbers, the accumulated difference $\Delta S_t$ grows linearly with $t$. Thus, the ratio diverges exponentially:
+\begin{equation}
+    \lim_{t \to \infty} \frac{P(\gamma^*)}{P(\gamma')} \to \infty
+\end{equation}
+Consequently, the probability mass concentrates entirely on the single optimal trajectory. $P_t(u) \to \delta(u - u^*)$, and $H(P_t) \to 0$.
+\end{proof}
+
+\textbf{Implication (Precocious Maturity):} An observer at $\rho$ looking back at $t \gg 1$ sees a history devoid of randomness. The selected path appears to have ``evolved'' instantly to the optimal configuration, skipping the stochastic exploration phase inherent in the generating process.
+
+\subsection{Theorem 2: The Linear Growth of Teleological Bias}
+\textit{Hypothesis: The initial conditions appear fine-tuned to target the root.}
+
+We define the \textbf{Anomaly Score} $\mathcal{A}(t)$ as the Pointwise Mutual Information (PMI) between the selected origin $u^*$ and the root $\rho$, relative to a non-selective random walk.
+\begin{equation}
+    \mathcal{A}(t) = \log \left( \frac{P_{\text{select}}(u^* | \rho)}{P_{\text{random}}(u^* \to \rho)} \right)
+\end{equation}
+
+\begin{theorem}
+The Anomaly Score $\mathcal{A}(t)$ scales linearly with the depth of the system.
+\end{theorem}
+
+\begin{proof}
+From Theorem 1, in the limit of high selection, $P_{\text{select}}(u^* | \rho) \approx 1$.
+In a random walk on a $k$-ary tree, the probability of a specific leaf connecting to the root is simply the inverse of the number of leaves:
+\begin{equation}
+    P_{\text{random}}(u^* \to \rho) = \frac{1}{|\Lambda_t|} = k^{-t}
+\end{equation}
+Substituting these into the Anomaly equation:
+\begin{equation}
+    \mathcal{A}(t) \approx \log \left( \frac{1}{k^{-t}} \right) = \log(k^t) = t \cdot \log(k)
+\end{equation}
+\end{proof}
+
+\textbf{Implication (Apparent Intent):} The ``improbability'' of the observed history is not constant; it is a linear function of time. A system of depth 1000 does not look 10 times more fine-tuned than a system of depth 100; it looks exponentially more fine-tuned ($k^{1000}$ vs $k^{100}$). This manifests as an overwhelming ``Teleological Bias,'' where the initial conditions appear to possess prior knowledge of the Root's location.
+
+\section{Conclusion}
+We have shown that a Retro-Selective Causal Network generates a history that is structurally distinct from the process that creates it. By fixing the Root and expanding the Past, the system effectively acts as a \textbf{Maxwell's Demon} on its own history, filtering out high-entropy paths. The resulting observable timeline exhibits:
+\begin{itemize}
+    \item \textbf{Hyper-Efficiency:} The surviving path minimizes action globally, appearing ``smarter'' than any local decision agent could be.
+    \item \textbf{Inverse Luck:} The probability of the observed history occurring by chance vanishes as $k^{-t}$, creating the illusion of a designed or scripted universe.
+\end{itemize}
+
+\end{document}

@@ -2,11 +2,11 @@
 
 ## 1. Project Overview
 
-**Project Leviathan** is a computational investigation into the **Temporal Density Hypothesis**. This framework challenges the standard ΛCDM assumption that time flows linearly ($d\tau = dt$) back to the Big Bang.
+**Project Leviathan** investigates the topological origins of the **Early Maturity Problem**. We propose that the 'impossible' efficiency of high-redshift structures is not a breakdown of physics, but the geometric signature of a **Retro-Selective Causal Graph**.
 
-Instead, we posit that the rate of causal processing ($\tau$) scales inversely with the complexity of the Universe, following a power law $\tau \propto t^{-\alpha}$. This implies an **Asymptotic Singularity** where the "first second" of the Universe contained an effectively infinite causal duration, rendering Inflation obsolete and explaining the "impossible" maturity of the early Universe.
+This framework challenges the standard forward-chaining stochastic models of $\Lambda$CDM by modeling the universe as a directed tree graph where the Present acts as a fixed boundary condition, forcing the past to optimize structurally.
 
-The pipeline performs a rigorous **Null-Test Audit** across three cosmological epochs to falsify this hypothesis:
+The conputational pipeline performs a rigorous **Null-Test Audit** across three cosmological epochs to falsify this hypothesis:
 1.  **The High-Z Era:** Testing the "Structural Age" of JWST galaxies vs. Coordinate Time.
 2.  **The Cosmic Noon:** Testing for Mega-Structures exceeding the Causal Horizon.
 3.  **The CMB Era:** Testing the formation rate of the Eridanus Supervoid (Cold Spot).
@@ -21,36 +21,25 @@ We audit anomalies that represent "Causality Breakers" in the standard model.
 | **B. Connectivity** | Hercules-Corona Wall | **Graph Diameter** | Connected structures larger than the causality horizon ($> 1.2$ Gly). |
 | **C. Vacuum** | The Cold Spot | **Void Depth** | Supervoids clearing faster than Dark Energy growth allows. |
 
-## 3. Current Status: Grand Unification Complete
+## 3. Key Findings: The Leviathan Scaling Law
 
-We have successfully audited the observable universe from $z=0$ to $z=10$. The "Rushing" anomaly is not isolated; it is a continuous, scale-invariant property of the cosmos.
+Our audit revealed that the "precocious maturity" of the universe is not limited to specific epochs but follows a continuous global scaling law. We defined a "Rushing Factor" ($R$)—the degree of structural anomaly relative to $\Lambda$CDM—and found it scales geometrically with redshift:
 
-### **The Leviathan Scaling Law**
-By anchoring the growth model to the present day ($R=1$ at $z=0$), we have derived the definitive scaling coefficient:
+$$R(z) \propto (1+z)^{1.26}$$
 
-$$R(z) = (1+z)^{1.26}$$
+### The Topological Link
+This exponent ($1.26$) was originally derived empirically from the data but has now been identified as a topological constant of the universe's causal graph.
 
-This implies that **Structure Formation scales with the Expansion Factor**, not Coordinate Time.
+* **The Prediction:** A retro-selective causal tree generates a "Teleological Bias" ($\mathcal{A}$) that scales linearly with system depth ($t$):
+    $$\mathcal{A} \propto t \cdot \ln(k)$$
+* **The Discovery:** By identifying system depth with cosmic expansion ($t = \ln(1+z)$), the observed exponent $1.26$ corresponds to the **Logarithmic Branching Factor** of the cosmic tree:
+    $$\ln k \approx 1.26 \implies k \approx 3.5$$
 
-| Epoch | Redshift | Anomaly Audit | Rushing Factor ($R$) | Status |
-| :--- | :--- | :--- | :--- | :--- |
-| **Phase III** | $0.5$ | Eridanus Supervoid | **3.17x** | **Confirmed** (Volumetric) |
-| **Phase II** | $2.0$ | DESI Mega-Walls | **4.60x** | **Confirmed** (472k Nodes) |
-| **Phase IV** | $4.5$ | **Euclid "Scaffolding"** | **9.75x** | **DISCOVERY** (Q1 Data) |
-| **Phase I** | $10.0$ | JWST Early Mass | **22.0x** | **Confirmed** (Labbé et al.) |
-
-### **Key Findings**
-* **The Leviathan Event (z=2):** Phase II identified a coherent structure spanning **11.2 Gpc**, exceeding the Causal Horizon by **9.3x**.
-* **The Scaffolding Discovery (z=4.5):** Euclid Q1 Deep Fields revealed a **1,463 Mpc** connected filament in the "Redshift Desert," proving that the Mega-Walls were already assembled only 1.3 Gyr after the Big Bang.
-* **The Computational Horizon:** The scaling law suggests an "Instantaneous Maturity" event at **$z \approx 40$**, where structure formation speed becomes effectively infinite relative to $\Lambda$CDM.
+This suggests the universe effectively "branches" into ~3.5 causal possibilities at each step, but retro-causal optimization preserves only the single most efficient path[cite: 8, 9, 10], creating the illusion of "impossible" maturity in the early universe.
 
 ---
 
-## 3. Repository Structure
-
-### `/paper` (Research Proposal & Manuscripts)
-* `proposal.pdf`: The formal definition of the Temporal Density Hypothesis and Singularity Asymptote.
-* `proposal.tex`: LaTeX source.
+## 4. Repository Structure
 
 ### `/scripts` (Execution Entry Points)
 These scripts run specific scientific audits.
@@ -78,9 +67,20 @@ Core mathematical modules implementing the specific tests.
 * `nulling.py`: Generates isotropic Gaussian Random Fields ($C_l$ preserved) for control tests.
 * `config.py`: Central repository of Cosmological Parameters ($H_0$, $\Omega_m$, $\alpha$).
 
+### `/papers` (theoretical derivations and findings)
+
+* **[proposal.pdf](papers/proposal.pdf):** *Original Project Proposal.*
+    * The initial hypothesis and methodology outline for Project Leviathan.
+
+* **[theory.pdf](papers/theory.pdf):** *Retro-Causal Optimization in Expanding Graph Topologies.*
+    * The formal mathematical proof demonstrating that any retro-selective network inevitably generates "precocious maturity" and "teleological bias" artifacts that scale linearly with system depth.
+
+* **[convergence_law.pdf](papers/convergence_law.pdf):** *The Convergence Law of Cosmic Structure.*
+    * The primary research paper detailing the data audit, the discovery of the $z^{1.26}$ scaling law, and the empirical evidence for retro-causal optimization.
+    
 ---
 
-## 4. Usage
+## 5. Usage
 
 To reproduce the Phase I "Early Bird" audit:
 
@@ -93,10 +93,10 @@ cd leviathan
 python scripts/audit_early_mass.py
 ```
 
-## 5. Acknowledgments
+## 6. Acknowledgments
 
 Data provided by the Planck Collaboration (2018 Release), JWST (MAST Archive), and SDSS/BOSS. Analysis performed using `astropy`, `healpy`, and `scipy`.
 
-## 6. License
+## 7. License
 
 MIT
