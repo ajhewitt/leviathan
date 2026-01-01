@@ -32,7 +32,7 @@ This exponent ($1.26$) was originally derived empirically from the data but has 
 
 * **The Prediction:** A retro-selective causal tree generates a "Teleological Bias" ($\mathcal{A}$) that scales linearly with system depth ($t$):
     $$\mathcal{A} \propto t \cdot \ln(k)$$
-* **The Discovery:** By identifying system depth with cosmic expansion (t = \ln(1+z)), the observed exponent $1.26$ corresponds to the **Logarithmic Branching Factor** of the cosmic tree:
+* **The Discovery:** By identifying system depth with cosmic expansion (t = ln(1+z)), the observed exponent $1.26$ corresponds to the **Logarithmic Branching Factor** of the cosmic tree:
     $$\ln k \approx 1.26 \implies k \approx 3.5$$
 
 This suggests the universe effectively "branches" into ~3.5 causal possibilities at each step, but retro-causal optimization preserves only the single most efficient path, creating the illusion of "impossible" maturity in the early universe.
