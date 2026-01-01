@@ -4,7 +4,7 @@
 
 **Project Leviathan** investigates the topological origins of the **Early Maturity Problem**. We propose that the 'impossible' efficiency of high-redshift structures is not a breakdown of physics, but the geometric signature of a **Retro-Selective Causal Graph**.
 
-This framework challenges the standard forward-chaining stochastic models of $\Lambda$CDM by modeling the universe as a directed tree graph where the Present acts as a fixed boundary condition, forcing the past to optimize structurally.
+This framework challenges the standard forward-chaining stochastic models of ΛCDM by modeling the universe as a directed tree graph where the Present acts as a fixed boundary condition, forcing the past to optimize structurally.
 
 The conputational pipeline performs a rigorous **Null-Test Audit** across three cosmological epochs to falsify this hypothesis:
 1.  **The High-Z Era:** Testing the "Structural Age" of JWST galaxies vs. Coordinate Time.
@@ -23,7 +23,7 @@ We audit anomalies that represent "Causality Breakers" in the standard model.
 
 ## 3. Key Findings: The Leviathan Scaling Law
 
-Our audit revealed that the "precocious maturity" of the universe is not limited to specific epochs but follows a continuous global scaling law. We defined a "Rushing Factor" ($R$)—the degree of structural anomaly relative to $\Lambda$CDM—and found it scales geometrically with redshift:
+Our audit revealed that the "precocious maturity" of the universe is not limited to specific epochs but follows a continuous global scaling law. We defined a "Rushing Factor" ($R$)—the degree of structural anomaly relative to ΛCDM—and found it scales geometrically with redshift:
 
 $$R(z) \propto (1+z)^{1.26}$$
 
@@ -32,10 +32,10 @@ This exponent ($1.26$) was originally derived empirically from the data but has 
 
 * **The Prediction:** A retro-selective causal tree generates a "Teleological Bias" ($\mathcal{A}$) that scales linearly with system depth ($t$):
     $$\mathcal{A} \propto t \cdot \ln(k)$$
-* **The Discovery:** By identifying system depth with cosmic expansion ($t = \ln(1+z)$), the observed exponent $1.26$ corresponds to the **Logarithmic Branching Factor** of the cosmic tree:
+* **The Discovery:** By identifying system depth with cosmic expansion (t = \ln(1+z)), the observed exponent $1.26$ corresponds to the **Logarithmic Branching Factor** of the cosmic tree:
     $$\ln k \approx 1.26 \implies k \approx 3.5$$
 
-This suggests the universe effectively "branches" into ~3.5 causal possibilities at each step, but retro-causal optimization preserves only the single most efficient path[cite: 8, 9, 10], creating the illusion of "impossible" maturity in the early universe.
+This suggests the universe effectively "branches" into ~3.5 causal possibilities at each step, but retro-causal optimization preserves only the single most efficient path, creating the illusion of "impossible" maturity in the early universe.
 
 ---
 
@@ -67,15 +67,15 @@ Core mathematical modules implementing the specific tests.
 * `nulling.py`: Generates isotropic Gaussian Random Fields ($C_l$ preserved) for control tests.
 * `config.py`: Central repository of Cosmological Parameters ($H_0$, $\Omega_m$, $\alpha$).
 
-### `/papers` (theoretical derivations and findings)
+### `/paper` (Theory and Findings)
 
-* **[proposal.pdf](papers/proposal.pdf):** *Original Project Proposal.*
+* **[proposal.pdf](paper/proposal.pdf):** *Original Project Proposal.*
     * The initial hypothesis and methodology outline for Project Leviathan.
 
-* **[theory.pdf](papers/theory.pdf):** *Retro-Causal Optimization in Expanding Graph Topologies.*
+* **[theory.pdf](paper/theory.pdf):** *Retro-Causal Optimization in Expanding Graph Topologies.*
     * The formal mathematical proof demonstrating that any retro-selective network inevitably generates "precocious maturity" and "teleological bias" artifacts that scale linearly with system depth.
 
-* **[convergence_law.pdf](papers/convergence_law.pdf):** *The Convergence Law of Cosmic Structure.*
+* **[convergence_law.pdf](paper/convergence_law.pdf):** *The Convergence Law of Cosmic Structure.*
     * The primary research paper detailing the data audit, the discovery of the $z^{1.26}$ scaling law, and the empirical evidence for retro-causal optimization.
     
 ---
